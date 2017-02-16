@@ -1,6 +1,7 @@
 package burp;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.UUID;
 
 public class UuidIssue implements IScanIssue {
@@ -31,7 +32,7 @@ public class UuidIssue implements IScanIssue {
 				for (long n = uuid.node(); n > 0; n >>= 8) mac.insert(0,
 						String.format(":%02X", n & 0xFF));
 				return prefix + "generated from <ul>" +
-					"<li>the timestamp <b>" + uuid.timestamp() + "</b>,</li>" +
+					"<li>the timestamp <b>" + new Date(getTimeFromUUID(uuid)) + "</b>,</li>" +
 					"<li>the clock sequence <b>" + uuid.clockSequence() + "</b> and</li>" +
 					"<li>the node (MAC address) <b>" + mac.substring(1) + "</b>.</li>" +
 					"</ul>This means that it's not fit for authorization purposes, as " +
@@ -50,6 +51,13 @@ public class UuidIssue implements IScanIssue {
 			default:
 				return prefix + "generated/derived from an unknown data source.";
 		}
+	}
+
+	// This method comes from Hector's TimeUUIDUtils class:
+	// https://github.com/rantav/hector/blob/master/core/src/main/java/me/prettyprint/cassandra/utils/TimeUUIDUtils.java
+	private static final long NUM_100NS_INTERVALS_SINCE_UUID_EPOCH = 0x01b21dd213814000L;
+	private static long getTimeFromUUID(UUID uuid) {
+		return (uuid.timestamp() - NUM_100NS_INTERVALS_SINCE_UUID_EPOCH) / 10000;
 	}
 
 	public final static String REMEDIATION = "Use version 4 (random) UUIDs";
