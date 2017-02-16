@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="burp-uuid" default="plugin">
+	<target name="plugin" depends="classes">
+		<zip destfile="burp-uuid.jar">
+			<fileset dir="build">
+				<include name="burp/BurpExtender.class"/>
+				<include name="burp/UuidIssue.class"/>
+			</fileset>
+		</zip>
+	</target>
+	<target name="classes">
+		<mkdir dir="build"/>
+		<javac srcdir="src:api" destdir="build" includeantruntime="false" />
+	</target>
+	<target name="clean">
+		<delete dir="build"/>
+		<delete file="burp-uuid.jar"/>
+	</target>
+</project>
