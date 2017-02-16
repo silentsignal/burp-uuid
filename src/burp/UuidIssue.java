@@ -27,10 +27,13 @@ public class UuidIssue implements IScanIssue {
 			" UUID <b>" + uuid + "</b> which is ";
 		switch (v) {
 			case 1:
+				StringBuilder mac = new StringBuilder(6 * 3);
+				for (long n = uuid.node(); n > 0; n >>= 8) mac.insert(0,
+						String.format(":%02X", n & 0xFF));
 				return prefix + "generated from <ul>" +
 					"<li>the timestamp <b>" + uuid.timestamp() + "</b>,</li>" +
 					"<li>the clock sequence <b>" + uuid.clockSequence() + "</b> and</li>" +
-					"<li>the node (MAC address) <b>" + Long.toHexString(uuid.node()) + "</b>.</li>" +
+					"<li>the node (MAC address) <b>" + mac.substring(1) + "</b>.</li>" +
 					"</ul>This means that it's not fit for authorization purposes, as " +
 					"it can be easily regenerated once the node and the approximate time is known.";
 			case 2:
