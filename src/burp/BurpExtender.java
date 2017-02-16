@@ -54,6 +54,6 @@ public class BurpExtender implements IBurpExtender, IScannerCheck
 
 	@Override
 	public int consolidateDuplicateIssues(IScanIssue existingIssue, IScanIssue newIssue) {
-		return -1;
+		return existingIssue.getIssueDetail().equals(newIssue.getIssueDetail()) ? -1 : 0;
 	}
 }
