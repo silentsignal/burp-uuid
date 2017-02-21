@@ -1,0 +1,11 @@
+Uuid: 65f32f209a72480ea5f1a0dac4f38248
+ExtensionType: 1
+Name: UUID Detector
+ScreenVersion: 1.0
+SerialVersion: 0
+MinPlatformVersion: 0
+ProOnly: False
+Author: @cybergibbons
+ShortDescription: Decode UUIDs.
+EntryPoint: burp-uuid.jar
+BuildCommand: ant
