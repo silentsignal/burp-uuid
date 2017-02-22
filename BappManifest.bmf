@@ -6,6 +6,6 @@ SerialVersion: 0
 MinPlatformVersion: 0
 ProOnly: False
 Author: @cybergibbons
-ShortDescription: Decode UUIDs.
+ShortDescription: Passively reports UUID/GUIDs observed within HTTP requests.
 EntryPoint: burp-uuid.jar
 BuildCommand: ant
