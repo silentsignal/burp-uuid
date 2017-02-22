@@ -6,7 +6,7 @@ ScreenVersion: 1.0
 SerialVersion: 1
 MinPlatformVersion: 0
 ProOnly: False
-Author: @cybergibbons
+Author: Andras Veres-Szentkiralyi
 ShortDescription: Passively reports UUID/GUIDs observed within HTTP requests.
 EntryPoint: burp-uuid.jar
 BuildCommand: ant
