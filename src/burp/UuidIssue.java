@@ -30,8 +30,6 @@ public class UuidIssue implements IScanIssue {
 		int v = uuid.version();
 		final String knownPrefix = "The request contains the version " + v +
 			" UUID <b>" + uuid + "</b> which is ";
-        final String unknown_prefix = "The request contains an undefined version " + v +
-            " UUID <b>" + uuid + "</b> which is ";
 		switch (v) {
 			case 1:
 				StringBuilder mac = new StringBuilder(6 * 3);
