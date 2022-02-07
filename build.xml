@@ -10,7 +10,7 @@
 	</target>
 	<target name="classes">
 		<mkdir dir="build"/>
-		<javac srcdir="src:api" destdir="build" includeantruntime="false" />
+		<javac srcdir="src:api" destdir="build" includeantruntime="false" source="1.8" target="1.8" />
 	</target>
 	<target name="clean">
 		<delete dir="build"/>
